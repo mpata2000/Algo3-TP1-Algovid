@@ -1,5 +1,5 @@
 Class {
 	#name : #ColegioSinBurbujasError,
 	#superclass : #Error,
-	#category : #TP1
+	#category : #'TP1-Modelo'
 }

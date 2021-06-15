@@ -6,7 +6,7 @@ Class {
 		'burbuja',
 		'datosCirculacion'
 	],
-	#category : #TP1
+	#category : #'TP1-Modelo'
 }
 
 { #category : #'as yet unclassified' }

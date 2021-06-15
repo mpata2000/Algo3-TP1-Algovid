@@ -1,5 +1,5 @@
 Class {
-	#name : #AlgoVidTest,
+	#name : #AlgoVidTestMio,
 	#superclass : #TestCase,
 	#instVars : [
 		'algovid'
@@ -8,37 +8,37 @@ Class {
 }
 
 { #category : #running }
-AlgoVidTest >> setUp [
+AlgoVidTestMio >> setUp [
 	algovid := AlgoVid new. "Aislamiento estricto por defecto"
 ]
 
 { #category : #tests }
-AlgoVidTest >> test01PorDefectoNoPuedeSalir [
+AlgoVidTestMio >> test01PorDefectoNoPuedeSalir [
   algovid nuevaPersona: 'Joaquin'.
   
   self deny: (algovid puedeCircular: 'Joaquin').
 ]
 
 { #category : #tests }
-AlgoVidTest >> test02NoSePuedeCrearDosVecesLaMismaPersona [
+AlgoVidTestMio >> test02NoSePuedeCrearDosVecesLaMismaPersona [
 	algovid nuevaPersona: 'Martín'.
 	self should: [algovid nuevaPersona: 'Martín'.] raise: PersonaYaExisteError.
 ]
 
 { #category : #tests }
-AlgoVidTest >> test03NoSePuedeCrearDosVecesLaMismaBurbuja [
+AlgoVidTestMio >> test03NoSePuedeCrearDosVecesLaMismaBurbuja [
 	algovid nuevaBurbuja: 'Algo3'.
 	self should: [algovid nuevaBurbuja: 'Algo3'.] raise: BurbujaYaExisteError.
 ]
 
 { #category : #tests }
-AlgoVidTest >> test04NoSePuedeCrearDosVecesElMismoColegio [
+AlgoVidTestMio >> test04NoSePuedeCrearDosVecesElMismoColegio [
 	algovid nuevoColegio: 'UBA'.
 	self should: [algovid nuevoColegio: 'UBA'.] raise: ColegioYaExisteError.
 ]
 
 { #category : #tests }
-AlgoVidTest >> test05SeAgregaUnSintomaAUnaPersonaNoPuedeCircularCovidSospechoso [
+AlgoVidTestMio >> test05SeAgregaUnSintomaAUnaPersonaNoPuedeCircularCovidSospechoso [
 	algovid nuevaPersona: 'Joaquin'.
 	algovid agregarSintoma: 'Tos' a: 'Joaquin'.
   
@@ -47,7 +47,7 @@ AlgoVidTest >> test05SeAgregaUnSintomaAUnaPersonaNoPuedeCircularCovidSospechoso 
 ]
 
 { #category : #tests }
-AlgoVidTest >> test06PersonaPorDefectoNegativo [
+AlgoVidTestMio >> test06PersonaPorDefectoNegativo [
 	algovid nuevaPersona: 'Joaquin'.
   
 	self assert: (algovid diagnosticoDe: 'Joaquin' ) equals: 'Negativo'.
@@ -55,7 +55,7 @@ AlgoVidTest >> test06PersonaPorDefectoNegativo [
 ]
 
 { #category : #tests }
-AlgoVidTest >> test07PersonaVacunadaPuedeCircular [
+AlgoVidTestMio >> test07PersonaVacunadaPuedeCircular [
 	algovid nuevaPersona: 'Joaquin'.
 	algovid estaVacunadx: 'Joaquin'.
   
@@ -63,7 +63,7 @@ AlgoVidTest >> test07PersonaVacunadaPuedeCircular [
 ]
 
 { #category : #tests }
-AlgoVidTest >> test08PersonaEscencialPuedeCircular [
+AlgoVidTestMio >> test08PersonaEscencialPuedeCircular [
 	algovid nuevaPersona: 'Joaquin'.
 	algovid esPersonalEsencial: 'Joaquin'.
   
@@ -71,7 +71,7 @@ AlgoVidTest >> test08PersonaEscencialPuedeCircular [
 ]
 
 { #category : #tests }
-AlgoVidTest >> test09PersonaDeRiegoNoPuedeCircular [
+AlgoVidTestMio >> test09PersonaDeRiegoNoPuedeCircular [
 	algovid nuevaPersona: 'Joaquin'.
 	algovid esPersonaDeRiesgo: 'Joaquin'.
 
@@ -80,7 +80,7 @@ AlgoVidTest >> test09PersonaDeRiegoNoPuedeCircular [
 ]
 
 { #category : #tests }
-AlgoVidTest >> test10PersonaDeRiegoYEsencialNoPuedeCircular [
+AlgoVidTestMio >> test10PersonaDeRiegoYEsencialNoPuedeCircular [
 	algovid nuevaPersona: 'Joaquin'.
 	algovid esPersonalEsencial: 'Joaquin'.
 	algovid esPersonaDeRiesgo: 'Joaquin'.
@@ -89,7 +89,7 @@ AlgoVidTest >> test10PersonaDeRiegoYEsencialNoPuedeCircular [
 ]
 
 { #category : #tests }
-AlgoVidTest >> test11PersonaDeRiegoVacunadaYEsencialNoPuedeCircular [
+AlgoVidTestMio >> test11PersonaDeRiegoVacunadaYEsencialNoPuedeCircular [
 	algovid nuevaPersona: 'Joaquin'.
 	algovid esPersonalEsencial: 'Joaquin'.
 	algovid esPersonaDeRiesgo: 'Joaquin'.
@@ -99,7 +99,7 @@ AlgoVidTest >> test11PersonaDeRiegoVacunadaYEsencialNoPuedeCircular [
 ]
 
 { #category : #tests }
-AlgoVidTest >> test12SPersonaCon4SintomasPositivo [
+AlgoVidTestMio >> test12SPersonaCon4SintomasPositivo [
 	algovid nuevaPersona: 'Joaquin'.
 	algovid agregarSintoma: 'Tos' a: 'Joaquin'.
 	algovid agregarSintoma: 'Fiebre' a: 'Joaquin'.
@@ -111,13 +111,13 @@ AlgoVidTest >> test12SPersonaCon4SintomasPositivo [
 ]
 
 { #category : #tests }
-AlgoVidTest >> test13BurbujaPorDefectoNoPinchada [
+AlgoVidTestMio >> test13BurbujaPorDefectoNoPinchada [
 	algovid nuevaBurbuja: 'Algo'.
 	self deny: (algovid burbujaPinchada: 'Algo')
 ]
 
 { #category : #tests }
-AlgoVidTest >> test14BurbujaConUnaPersonaNegativaNoPinchada [
+AlgoVidTestMio >> test14BurbujaConUnaPersonaNegativaNoPinchada [
 	algovid nuevaPersona: 'Joaquin'.
 	algovid nuevaBurbuja: 'Algo'.
 	algovid  agregarA: 'Joaquin' aLaBurbuja: 'Algo' .
@@ -127,7 +127,7 @@ AlgoVidTest >> test14BurbujaConUnaPersonaNegativaNoPinchada [
 ]
 
 { #category : #tests }
-AlgoVidTest >> test15BurbujaConUnaPersonaSospechosaNoPinchada [
+AlgoVidTestMio >> test15BurbujaConUnaPersonaSospechosaNoPinchada [
 	algovid nuevaPersona: 'Joaquin'.
 	algovid agregarSintoma: 'Tos' a: 'Joaquin'.
 	
@@ -139,7 +139,7 @@ AlgoVidTest >> test15BurbujaConUnaPersonaSospechosaNoPinchada [
 ]
 
 { #category : #tests }
-AlgoVidTest >> test16BurbujaConUnaPersonaPositivaPinchada [
+AlgoVidTestMio >> test16BurbujaConUnaPersonaPositivaPinchada [
 	algovid nuevaPersona: 'Joaquin'.
 	algovid agregarSintoma: 'Tos' a: 'Joaquin'.
 	algovid agregarSintoma: 'Fiebre' a: 'Joaquin'.
@@ -153,7 +153,7 @@ AlgoVidTest >> test16BurbujaConUnaPersonaPositivaPinchada [
 ]
 
 { #category : #tests }
-AlgoVidTest >> test17BurbujaConUnaPersonaSospechosaNoPinchadaDejaCircularAlRestoDeLaBurbuja [
+AlgoVidTestMio >> test17BurbujaConUnaPersonaSospechosaNoPinchadaDejaCircularAlRestoDeLaBurbuja [
 	algovid nuevaPersona: 'Joaquin'.
 	algovid agregarSintoma: 'Tos' a: 'Joaquin'.
 	
@@ -170,7 +170,7 @@ AlgoVidTest >> test17BurbujaConUnaPersonaSospechosaNoPinchadaDejaCircularAlResto
 ]
 
 { #category : #tests }
-AlgoVidTest >> test18BurbujaConUnaPersonaPositivaPinchadaNoDejaCircularAlRestoDeLaBurbuja [
+AlgoVidTestMio >> test18BurbujaConUnaPersonaPositivaPinchadaNoDejaCircularAlRestoDeLaBurbuja [
 	algovid nuevaPersona: 'Joaquin'.
 	algovid agregarSintoma: 'Tos' a: 'Joaquin'.
 	algovid agregarSintoma: 'Fiebre' a: 'Joaquin'.
@@ -189,7 +189,7 @@ AlgoVidTest >> test18BurbujaConUnaPersonaPositivaPinchadaNoDejaCircularAlRestoDe
 ]
 
 { #category : #tests }
-AlgoVidTest >> test19ColegioConUnaBurbujaSinPincharClasesPresenciales [
+AlgoVidTestMio >> test19ColegioConUnaBurbujaSinPincharClasesPresenciales [
 	algovid nuevaBurbuja: 'Algo'.
 	algovid nuevoColegio: 'UBA'.
 	
@@ -200,7 +200,7 @@ AlgoVidTest >> test19ColegioConUnaBurbujaSinPincharClasesPresenciales [
 ]
 
 { #category : #tests }
-AlgoVidTest >> test20ColegioConUnaBurbujaPinchadaNoHayClasesPresenciales [
+AlgoVidTestMio >> test20ColegioConUnaBurbujaPinchadaNoHayClasesPresenciales [
 	algovid nuevaPersona: 'Joaquin'.
 	algovid agregarSintoma: 'Tos' a: 'Joaquin'.
 	algovid agregarSintoma: 'Fiebre' a: 'Joaquin'.
@@ -218,7 +218,7 @@ AlgoVidTest >> test20ColegioConUnaBurbujaPinchadaNoHayClasesPresenciales [
 ]
 
 { #category : #tests }
-AlgoVidTest >> test21ContactoEstrechoEntreDosNegativosVacunadosPuedenCircular [
+AlgoVidTestMio >> test21ContactoEstrechoEntreDosNegativosVacunadosPuedenCircular [
 	algovid nuevaPersona: 'Leo'.
 	algovid estaVacunadx: 'Leo'.
 	
@@ -232,7 +232,7 @@ AlgoVidTest >> test21ContactoEstrechoEntreDosNegativosVacunadosPuedenCircular [
 ]
 
 { #category : #tests }
-AlgoVidTest >> test21ContactoEstrechoEntreUnSospechosoYNegativosVacunadoNoPuedenCircular [
+AlgoVidTestMio >> test21ContactoEstrechoEntreUnSospechosoYNegativosVacunadoNoPuedenCircular [
 	algovid nuevaPersona: 'Leo'.
 	algovid agregarSintoma: 'Tos' a: 'Leo'.
 	
@@ -247,7 +247,7 @@ AlgoVidTest >> test21ContactoEstrechoEntreUnSospechosoYNegativosVacunadoNoPueden
 ]
 
 { #category : #tests }
-AlgoVidTest >> test22ContactoEstrechoEntreUnPositivoYNegativosVacunadoNoPuedenCircular [
+AlgoVidTestMio >> test22ContactoEstrechoEntreUnPositivoYNegativosVacunadoNoPuedenCircular [
 	algovid nuevaPersona: 'Leo'.
 	algovid agregarSintoma: 'Tos' a: 'Leo'.
 	algovid agregarSintoma: 'Fiebre' a: 'Leo'.
@@ -264,16 +264,16 @@ AlgoVidTest >> test22ContactoEstrechoEntreUnPositivoYNegativosVacunadoNoPuedenCi
 ]
 
 { #category : #tests }
-AlgoVidTest >> test23BuscarPersonaInexistenteDaError [
+AlgoVidTestMio >> test23BuscarPersonaInexistenteDaError [
 	self should: [ algovid puedeCircular: 'Leo' ] raise: PersonaNoExisteError .
 ]
 
 { #category : #tests }
-AlgoVidTest >> test24BuscarBurbujaInexistenteDaError [
+AlgoVidTestMio >> test24BuscarBurbujaInexistenteDaError [
 	self should: [ algovid burbujaPinchada: 'Al' ] raise: BurbujaNoExisteError .
 ]
 
 { #category : #tests }
-AlgoVidTest >> test25BuscarColegioInexistenteDaError [
+AlgoVidTestMio >> test25BuscarColegioInexistenteDaError [
 	self should: [ algovid clasesPresencialesEn: 'UBA' ] raise: ColegioNoExisteError .
 ]

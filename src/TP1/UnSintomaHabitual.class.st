@@ -1,7 +1,7 @@
 Class {
 	#name : #UnSintomaHabitual,
 	#superclass : #Sintomas,
-	#category : #TP1
+	#category : #'TP1-Modelo'
 }
 
 { #category : #'as yet unclassified' }

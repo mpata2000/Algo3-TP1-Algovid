@@ -1,5 +1,5 @@
 Class {
 	#name : #PersonaYaTieneEseSintomaError,
 	#superclass : #Error,
-	#category : #TP1
+	#category : #'TP1-Modelo'
 }
