@@ -1,0 +1,34 @@
+@startuml InterfazBurbujaPersona
+
+class SinBurbuja{
+    +pincharBurbuja()
+    +puedeCircular(): Boolean
+}
+
+class Burbuja{
+    +agregar(unaPersona:Persona)
+    +burbujaPinchada():
+    +pincharBurbuja()
+    +puedeCircular(): Boolean
+}
+
+class BurbujaPinchada{}
+
+class BurbujaNoPinchada{}
+
+interface EstadoBurbuja <<interface>> {
+    +burbujaPinchada(): Boolean
+}
+
+interface BurbujaPersona <<interface>> {
+    +pincharBurbuja()
+    +puedeCircular(): Boolean
+}
+
+BurbujaPersona <|.. SinBurbuja
+BurbujaPersona <|.. Burbuja
+Burbuja --> EstadoBurbuja
+EstadoBurbuja <|.. BurbujaPinchada
+EstadoBurbuja <|.. BurbujaNoPinchada
+
+@enduml

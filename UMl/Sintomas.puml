@@ -1,0 +1,37 @@
+@startuml Sintomas
+
+abstract class Sintomas{
+    -tiposSintomas: List
+    -diagnostico: DiagnosticoCovid
+
+    +agregarSintoma(unSintoma: String): Sintomas
+    +agregarSintomaHabitual(unSintoma: String): Sintomas
+    +agregarSintomaNoHabitual(unSintoma: String): Sintomas
+    +conSintomas(listaSintomas :  List)
+    +contactoEstrechoNoPuedeCircular(): Boolean
+    +diagnostico(): String
+    +pincharBurbuja(unaBurbuja: Burbja)
+    +puedeCircular(): Boolean
+}
+
+Sintomas <|-- SinSintomas
+Sintomas <|--- UnSintomaHabitual
+Sintomas <|--- UnSintomaNoHabitual
+Sintomas <|---- DosSintomasConHabituales
+Sintomas <|---- DosSintomasSinHabituales
+Sintomas <|----- TresSintomasConHabituales
+Sintomas <|----- TresSintomasSinHabituales
+Sintomas <|----- CuatroSintomasOMas
+
+SinSintomas ..> UnSintomaHabitual
+SinSintomas ..> UnSintomaNoHabitual
+UnSintomaHabitual ..> DosSintomasConHabituales
+UnSintomaNoHabitual ..> DosSintomasSinHabituales
+UnSintomaNoHabitual ..> DosSintomasConHabituales
+DosSintomasSinHabituales ..> TresSintomasConHabituales
+DosSintomasSinHabituales ..> TresSintomasSinHabituales
+DosSintomasConHabituales ..> TresSintomasConHabituales
+TresSintomasSinHabituales ..> CuatroSintomasOMas
+TresSintomasConHabituales ..> CuatroSintomasOMas
+
+@enduml

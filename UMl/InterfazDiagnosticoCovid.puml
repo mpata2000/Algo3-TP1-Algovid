@@ -1,0 +1,21 @@
+@startuml InterfazDiagnosticoCovid
+
+
+interface DiagnosticoCovid <<interface>>{
+    +puedeCircular(): Boolean
+    +diagnostico(): String
+    +contactoEstrechoPuedeCircular(): Boolean
+    +pincharBurbuja(unaBurbuja: Burbuja)
+}
+
+class CovidPositivo{}
+
+class CovidNegativo{}
+
+class CovidSospechoso{}
+
+DiagnosticoCovid <|.. CovidNegativo
+DiagnosticoCovid <|.. CovidSospechoso
+DiagnosticoCovid <|.. CovidPositivo
+
+@enduml

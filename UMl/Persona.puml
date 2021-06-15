@@ -1,0 +1,61 @@
+@startuml Persona
+
+class Persona{
+    +agregarSintoma(unSintoma: String)
+    +asignarBurbuja(unaBurbuja: Burbuja)
+    +contactoEstrechoCon(unaPersona: Persona)
+    +contactoEstrechoNoPuedeCircular():Boolean
+    +diagnostico(): String
+    +esPersonaDeRiesgo()
+    +esPersonalEsencial()
+    +puedeCircular():Boolean
+    +vacunar()
+}
+
+interface BurbujaPersona <<interface>>{
+    +pincharBurbuja()
+    +puedeCircular(): Boolean
+}
+
+abstract class Sintomas{
+    -tiposSintomas:List
+
+    +agregarSintoma(unSintoma:string):Sintomas
+    +agregarSintomaHabitual(unSintoma:string):Sintomas
+    +agregarSintomaNoHabitual(unSintoma:string):Sintomas
+    +conSintomas(listaSintomas : List)
+    +contactoEstrechoNoPuedeCircular():Boolean
+    +diagnostico():string
+    +pincharBurbuja(unaBurbuja:Burbja)
+    +puedeCircular():Boolean
+}
+
+interface DiagnosticoCovid <<interface>>{
+    +puedeCircular(): Boolean
+    +diagnostico(): String
+    +contactoEstrechoPuedeCircular(): Boolean
+    +pincharBurbuja(unaBurbuja: Burbuja)
+}
+
+class DatosCirculacion{
+    - contactoEstrecho: Lista
+    - vacunadx: EstadoVacuna
+    - personal: EstdoPersonalEsencial
+    - personaDeRiesgo: EstadoPersonaDeRiesgo
+
+    +contactoEstrechoCon(unaPersona: Persona)
+    +contactosEstrechosPuedeCircular(): Boolean
+    +esPersonaDeRiesgo()
+    esPersonalEsencial()
+    +puedeCircular(): Boolean
+    +vacunar()
+}
+
+
+Persona "*" --> "1" BurbujaPersona
+Persona "1" --> "1" DatosCirculacion
+Persona "1" --> "1" Sintomas
+Sintomas "1" --> "1" DiagnosticoCovid
+
+
+@enduml

@@ -1,0 +1,38 @@
+@startuml DiagramaPersonaPuedeCircular
+Actor Corrector
+participant ":Algovid" as Algovid
+participant ":Persona" as Persona
+participant ":Burbuja" as Burbuja
+participant "__:DatosCirculacion__" as DatosCirculacion
+
+activate Corrector
+Corrector -> Algovid : puedeCircular(unaPersona)
+activate Algovid
+Algovid -> Algovid : buscarPersona(unaPersona)
+activate Algovid
+Algovid --> Algovid: :Persona
+deactivate Algovid
+Algovid -> Persona : puedeCircular()
+activate Persona
+Persona->DatosCirculacion: puedeCircular()
+activate DatosCirculacion
+DatosCirculacion-->Persona: true || false
+deactivate DatosCirculacion
+Persona -> Sintomas : puedeCircular()
+activate Sintomas
+Sintomas -> Diagnostico : puedeCircular()
+activate Diagnostico
+Diagnostico --> Sintomas: true || false
+deactivate Diagnostico
+Sintomas --> Persona: true || false
+deactivate Sintomas
+Persona->Burbuja: puedeCircular()
+activate Burbuja
+Burbuja-->Persona: true||false
+deactivate Burbuja
+Persona--> Algovid: true || false
+deactivate Persona
+Algovid-->Corrector: true || false
+deactivate Algovid
+
+@enduml

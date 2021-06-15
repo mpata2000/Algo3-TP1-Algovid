@@ -1,0 +1,48 @@
+@startuml DatosCirculacion
+
+class DatosCirculacion{
+    - contactoEstrecho: Lista
+
+    +contactoEstrechoCon(unaPersona: Persona)
+    +contactosEstrechosPuedeCircular(): Boolean
+    +esPersonaDeRiesgo()
+    esPersonalEsencial()
+    +puedeCircular(): Boolean
+    +vacunar()
+}
+
+interface EstadoPersonaDeRiesgo <<interface>>{
+    +esDeRiesgo(): Boolean
+}
+
+class PersonaNoDeRiesgo{}
+
+class PersonaDeRiesgo{}
+
+interface EstadoVacuna <<interface>>{
+    +estaVacunadx(): Boolean
+}
+
+class Vacunadx{}
+
+class NoVacunadx{}
+
+interface EstadoPersonalEsencial <<interface>>{
+    +esEsencial(): Boolean
+}
+
+class PersonalEsencial{}
+
+class PersonalNoEsencial{}
+
+DatosCirculacion "1" --> "1" EstadoPersonaDeRiesgo
+DatosCirculacion "1" --> "1" EstadoPersonalEsencial
+DatosCirculacion "1" --> "1" EstadoVacuna
+EstadoPersonaDeRiesgo  <|.. PersonaDeRiesgo
+EstadoPersonaDeRiesgo  <|.. PersonaNoDeRiesgo
+EstadoVacuna  <|.. Vacunadx
+EstadoVacuna  <|.. NoVacunadx
+EstadoPersonalEsencial  <|.. PersonalEsencial
+EstadoPersonalEsencial  <|.. PersonalNoEsencial
+
+@enduml

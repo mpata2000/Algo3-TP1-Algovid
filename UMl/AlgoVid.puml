@@ -1,0 +1,58 @@
+@startuml AlgoVid
+
+class AlgoVid{
+    +agregarAALaBurbuja(unaPersona : String,unaBurbuja : String)
+    +agregarAAlColegio(unaBurbuja : String,unColegio : String)
+    +agregarSintomaA(unSintoma : String,unaPersoa : String)
+    +burbujaPinchada(unaBurbuja : String) : Boolean
+    +clasesPresencialesEn(unColegio : String) : Boolean
+    +contactoEstrechoEntreY(unaPersona : String,unaPersona : String)
+    +diagnosticoDe(unaPersona : String): String
+    +esPersonaDeRiesgo(unaPersona : String)
+    +esPersonalEsencial(unaPersona : String)
+    +estaVacunadx(unaPersona : String)
+    +puedeCircular(unaPersona : String) : Boolean
+}
+
+class Persona{
+    -sintoma: Sintomas
+    -datosCirculacion: DatosCirculacion
+
+    +agregarSintoma(unSintoma: String)
+    +asignarBurbuja(unaBurbuja: Burbuja)
+    +contactoEstrechoCon(unaPersona: Persona)
+    +contactoEstrechoNoPuedeCircular():Boolean
+    +diagnostico(): String
+    +esPersonaDeRiesgo()
+    +esPersonalEsencial()
+    +puedeCircular(): Boolean
+    +vacunar()
+}
+
+
+class Burbuja{
+    -estadoBurbuja: EstadoBurbuja
+
+    +agregar(unaPersona:Persona)
+    +burbujaPinchada():
+}
+
+class Colegio{
+    +agregarBurbuja(unaBurbuja:Burbuja)
+    +clasesPresenciales(): Boolean
+}
+
+interface BurbujaPersona <<interface>> {
+    +pincharBurbuja()
+    +puedeCircular(): Boolean
+}
+
+AlgoVid "1" --> "*" Colegio
+AlgoVid "1" --> "*" Burbuja
+AlgoVid "1" --> "*" Persona
+Colegio "1" -right-> "*" Burbuja
+Burbuja .right.|> BurbujaPersona
+Persona "*" -left-> "1" BurbujaPersona
+
+
+@enduml

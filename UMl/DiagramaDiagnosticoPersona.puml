@@ -1,0 +1,29 @@
+@startuml DiagramaDiagnosticoPersona
+
+Actor Corrector
+participant ":Algovid" as Algovid
+participant ":Persona" as Persona
+
+activate Corrector
+Corrector -> Algovid : diagnosticoDe(unaPersona)
+activate Algovid
+Algovid -> Algovid : buscarPersona(unaPersona)
+activate Algovid
+Algovid --> Algovid: :Persona
+deactivate Algovid
+Algovid -> Persona : diagnostico()
+activate Persona
+Persona -> Sintomas : diagnostico()
+activate Sintomas
+Sintomas -> Diagnostico : diagnostico()
+activate Diagnostico
+Diagnostico --> Sintomas: String
+deactivate Diagnostico
+Sintomas --> Persona: String
+deactivate Sintomas
+Persona--> Algovid: String
+deactivate Persona
+Algovid-->Corrector:String
+deactivate Algovid
+
+@enduml

@@ -1,0 +1,29 @@
+@startuml DiagramaAgregarUnSintomaPersona
+
+Actor Corrector
+participant ":Algovid" as Algovid
+participant "__:Persona__" as Persona
+
+activate Corrector
+Corrector -> Algovid : agregarSintomaA(unaPersona,unSintoma)
+activate Algovid
+Algovid -> Algovid : buscarPersona(unaPersona)
+activate Algovid
+Algovid --> Algovid: :Persona
+deactivate Algovid
+Algovid -> Persona : agregarSintoma(unSintoma)
+deactivate Algovid
+activate Persona
+Persona -> Sintomas : agregarSintoma(unSintoma)
+activate Sintomas
+Sintomas --> Persona: :Sintomas
+deactivate Sintomas
+Persona -> Sintomas : pincharBurbuja(unaBurbuja)
+activate Sintomas
+deactivate Persona
+Sintomas -> Diagnostico : pincharBurbuja(unaBurbuja)
+deactivate Sintomas
+activate Diagnostico
+deactivate Diagnostico
+
+@enduml

@@ -1,0 +1,35 @@
+@startuml DiagramaAgregarUnSintomaHabitualASintomas
+
+participant ":Persona" as Persona
+participant "SinSintomas:Sintomas" as SinSintomas
+participant "UnSintomaHabitual:Sintomas" as UnSintoma
+participant ":DiagnosticoSospechoso" as Diagnostico
+
+->Persona: agregarSintoma("Tos")
+activate Persona
+Persona -> SinSintomas: agregarSintoma("Tos")
+activate SinSintomas
+SinSintomas -> SinSintomas: agregarSintomaHabitual(listaSintomas)
+activate SinSintomas
+create UnSintoma
+SinSintomas --> UnSintoma: <<create>>
+activate UnSintoma
+create Diagnostico
+UnSintoma --> Diagnostico: <<create>>
+UnSintoma --> SinSintomas: :UnSintomaHabitual
+SinSintomas -> SinSintomas: :UnSintomaHabitual
+deactivate SinSintomas
+deactivate UnSintoma
+SinSintomas --> Persona: :UnSintomaHabitual
+destroy SinSintomas
+deactivate SinSintomas
+Persona -> UnSintoma: pincharBurbuja(unaBurbuja)
+activate UnSintoma
+UnSintoma -> Diagnostico: pincharBurbuja(unaBurbuja)
+activate Diagnostico
+deactivate Diagnostico
+deactivate UnSintoma
+
+
+
+@enduml

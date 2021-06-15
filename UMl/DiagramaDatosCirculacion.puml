@@ -1,0 +1,31 @@
+@startuml DiagramaDatosCirculacion
+
+participant ":DatosCirculacion" as DatosCirculacion
+participant ":Persona" as Persona
+
+->DatosCirculacion: puedeCircular()
+activate DatosCirculacion
+DatosCirculacion -> EstadoVacuna: estaVacunado()
+activate EstadoVacuna
+EstadoVacuna --> DatosCirculacion: true || false
+deactivate EstadoVacuna
+DatosCirculacion->EstadoPersonalEsencial: esEsencial()
+activate EstadoPersonalEsencial
+EstadoPersonalEsencial --> DatosCirculacion: true || false
+deactivate EstadoPersonalEsencial
+DatosCirculacion -> EstadoPersonaDeRiesgo: esDeRiesgo()
+activate EstadoPersonaDeRiesgo
+EstadoPersonaDeRiesgo--> DatosCirculacion: true || false
+deactivate EstadoPersonaDeRiesgo
+DatosCirculacion -> DatosCirculacion: contactosEstrechosPuedeCircular()
+activate DatosCirculacion
+loop anySatisfy
+    DatosCirculacion -> Persona: contactoEstrechoNoPuedeCircular
+    activate Persona
+    Persona --> DatosCirculacion: true||false
+    deactivate Persona
+end
+DatosCirculacion --> DatosCirculacion: true||false
+deactivate DatosCirculacion
+<--DatosCirculacion: true||false
+@enduml

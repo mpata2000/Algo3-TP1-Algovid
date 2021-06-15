@@ -1,0 +1,38 @@
+@startuml DiagramaDosSintomasSeLeAgregaUnSintoma
+
+participant ":Persona" as Persona
+participant "DosSintomasSinHabituales:Sintomas" as DosSintomasSinHabituales
+participant "TresSintomaConHabituales:Sintomas" as TresSintomaConHabituales
+participant ":DiagnosticoPositivo" as Diagnostico
+participant "unaBurbuja:Burbuja" as Burbuja
+
+->Persona: agregarSintoma("Tos")
+activate Persona
+Persona -> DosSintomasSinHabituales: agregarSintoma("Tos")
+activate DosSintomasSinHabituales
+DosSintomasSinHabituales -> DosSintomasSinHabituales: agregarSintomaHabitual(listaSintomas)
+activate DosSintomasSinHabituales
+create TresSintomaConHabituales
+DosSintomasSinHabituales --> TresSintomaConHabituales: <<create>>
+activate TresSintomaConHabituales
+create Diagnostico
+TresSintomaConHabituales --> Diagnostico: <<create>>
+TresSintomaConHabituales --> DosSintomasSinHabituales: :TresSintomaConHabitualesHabitual
+deactivate TresSintomaConHabituales
+DosSintomasSinHabituales -> DosSintomasSinHabituales: :TresSintomaConHabitualesHabitual
+deactivate DosSintomasSinHabituales
+DosSintomasSinHabituales --> Persona: :TresSintomaConHabitualesHabitual
+destroy DosSintomasSinHabituales
+deactivate DosSintomasSinHabituales
+Persona -> TresSintomaConHabituales: pincharBurbuja(unaBurbuja)
+activate TresSintomaConHabituales
+TresSintomaConHabituales -> Diagnostico: pincharBurbuja(unaBurbuja)
+activate Diagnostico
+Diagnostico->Burbuja : pincharBurbuja(unaBurbuja)
+deactivate Diagnostico
+activate Burbuja
+deactivate Burbuja
+deactivate TresSintomaConHabituales
+
+
+@enduml
