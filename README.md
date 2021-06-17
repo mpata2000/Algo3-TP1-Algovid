@@ -1,5 +1,6 @@
 # Algo3-TP1-Algovid
 
+Usar Pharo 8.0, probableente funcione con versiones mas actuales
 
 ## Objetivo
 
